@@ -33,16 +33,16 @@ frame_support::construct_runtime!(
 		NodeBlock = Block,
 		UncheckedExtrinsic = UncheckedExtrinsic,
 	{
-		System: frame_system::{Module, Call, Config, Storage, Event<T>},
-		Balances: pallet_balances::{Module, Call, Storage, Config<T>, Event<T>},
-		Staking: pallet_staking::{Module, Call, Config<T>, Storage, Event<T>, ValidateUnsigned},
-		Indices: pallet_indices::{Module, Call, Storage, Config<T>, Event<T>},
-		Session: pallet_session::{Module, Call, Storage, Event, Config<T>},
+		System: frame_system::{Pallet, Call, Config, Storage, Event<T>},
+		Balances: pallet_balances::{Pallet, Call, Storage, Config<T>, Event<T>},
+		Staking: pallet_staking::{Pallet, Call, Config<T>, Storage, Event<T>, ValidateUnsigned},
+		Indices: pallet_indices::{Pallet, Call, Storage, Config<T>, Event<T>},
+		Session: pallet_session::{Pallet, Call, Storage, Event, Config<T>},
 	}
 );
 
 impl frame_system::Config for Test {
-	type BaseCallFilter = ();
+	type BaseCallFilter = frame_support::traits::Everything;
 	type BlockWeights = ();
 	type BlockLength = ();
 	type DbWeight = ();
@@ -64,12 +64,15 @@ impl frame_system::Config for Test {
 	type OnKilledAccount = ();
 	type SystemWeightInfo = ();
 	type SS58Prefix = ();
+	type OnSetCode = ();
 }
 parameter_types! {
 	pub const ExistentialDeposit: Balance = 10;
 }
 impl pallet_balances::Config for Test {
 	type MaxLocks = ();
+	type MaxReserves = ();
+	type ReserveIdentifier = [u8; 8];
 	type Balance = Balance;
 	type Event = Event;
 	type DustRemoval = ();
@@ -116,7 +119,7 @@ impl pallet_session::SessionHandler<AccountId> for TestSessionHandler {
 		_: &[(AccountId, Ks)],
 	) {}
 
-	fn on_disabled(_: usize) {}
+	fn on_disabled(_: u32) {}
 }
 
 impl pallet_session::Config for Test {
@@ -149,16 +152,32 @@ parameter_types! {
 
 pub type Extrinsic = sp_runtime::testing::TestXt<Call, ()>;
 
-impl<C> frame_system::offchain::SendTransactionTypes<C> for Test where
+impl<C> frame_system::offchain::SendTransactionTypes<C> for Test
+where
 	Call: From<C>,
 {
 	type OverarchingCall = Call;
 	type Extrinsic = Extrinsic;
 }
 
+pub struct MockElectionProvider;
+impl frame_election_provider_support::ElectionProvider<AccountId, BlockNumber>
+	for MockElectionProvider
+{
+	type Error = ();
+	type DataProvider = pallet_staking::Module<Test>;
+
+	fn elect() -> Result<
+		(sp_npos_elections::Supports<AccountId>, frame_support::weights::Weight),
+		Self::Error
+	> {
+		Err(())
+	}
+}
+
 impl pallet_staking::Config for Test {
 	type Currency = Balances;
-	type UnixTime = pallet_timestamp::Module<Self>;
+	type UnixTime = pallet_timestamp::Pallet<Self>;
 	type CurrencyToVote = frame_support::traits::SaturatingCurrencyToVote;
 	type RewardRemainder = ();
 	type Event = Event;
@@ -169,7 +188,7 @@ impl pallet_staking::Config for Test {
 	type SlashCancelOrigin = frame_system::EnsureRoot<Self::AccountId>;
 	type BondingDuration = ();
 	type SessionInterface = Self;
-	type RewardCurve = RewardCurve;
+	type EraPayout = pallet_staking::ConvertCurve<RewardCurve>;
 	type NextNewSession = Session;
 	type ElectionLookahead = ();
 	type Call = Call;
@@ -179,4 +198,5 @@ impl pallet_staking::Config for Test {
 	type UnsignedPriority = ();
 	type OffchainSolutionWeightLimit = ();
 	type WeightInfo = ();
+	type ElectionProvider = MockElectionProvider;
 }

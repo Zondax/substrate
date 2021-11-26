@@ -13,13 +13,13 @@ mod pallet {
 	#[pallet::hooks]
 	impl<T: Config> Hooks<BlockNumberFor<T>> for Pallet<T> {}
 
-	#[derive(Encode, Decode)]
+	#[derive(Encode, Decode, scale_info::TypeInfo)]
 	struct Bar;
 
 	#[pallet::call]
 	impl<T: Config> Pallet<T> {
 		#[pallet::weight(0)]
-		fn foo(origin: OriginFor<T>, bar: Bar) -> DispatchResultWithPostInfo {
+		pub fn foo(origin: OriginFor<T>, bar: Bar) -> DispatchResultWithPostInfo {
 			Ok(().into())
 		}
 	}

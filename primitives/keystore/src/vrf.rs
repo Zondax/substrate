@@ -122,15 +122,11 @@ pub fn make_transcript(data: VRFTranscriptData) -> Transcript {
 	transcript
 }
 
-
 #[cfg(test)]
 mod tests {
 	use super::*;
 	use rand::RngCore;
-	use rand_chacha::{
-		rand_core::SeedableRng,
-		ChaChaRng,
-	};
+	use rand_chacha::{rand_core::SeedableRng, ChaChaRng};
 
 	#[test]
 	fn transcript_creation_matches() {
@@ -156,9 +152,7 @@ mod tests {
 
 		let test = |t: Transcript| -> [u8; 16] {
 			let mut b = [0u8; 16];
-			t.build_rng()
-				.finalize(&mut ChaChaRng::from_seed([0u8;32]))
-				.fill_bytes(&mut b);
+			t.build_rng().finalize(&mut ChaChaRng::from_seed([0u8; 32])).fill_bytes(&mut b);
 			b
 		};
 

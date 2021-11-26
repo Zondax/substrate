@@ -15,15 +15,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use crate::{Config, Module};
-use codec::{Encode, Decode};
-use sp_runtime::{
-	traits::SignedExtension,
-	transaction_validity::TransactionValidityError,
-};
+use crate::{Config, Pallet};
+use codec::{Decode, Encode};
+use scale_info::TypeInfo;
+use sp_runtime::{traits::SignedExtension, transaction_validity::TransactionValidityError};
 
 /// Ensure the transaction version registered in the transaction is the same as at present.
-#[derive(Encode, Decode, Clone, Eq, PartialEq)]
+///
+/// # Transaction Validity
+///
+/// The transaction with incorrect `transaction_version` are considered invalid. The validity
+/// is not affected in any other way.
+#[derive(Encode, Decode, Clone, Eq, PartialEq, TypeInfo)]
+#[scale_info(skip_type_params(T))]
 pub struct CheckTxVersion<T: Config + Send + Sync>(sp_std::marker::PhantomData<T>);
 
 impl<T: Config + Send + Sync> sp_std::fmt::Debug for CheckTxVersion<T> {
@@ -53,6 +57,6 @@ impl<T: Config + Send + Sync> SignedExtension for CheckTxVersion<T> {
 	const IDENTIFIER: &'static str = "CheckTxVersion";
 
 	fn additional_signed(&self) -> Result<Self::AdditionalSigned, TransactionValidityError> {
-		Ok(<Module<T>>::runtime_version().transaction_version)
+		Ok(<Pallet<T>>::runtime_version().transaction_version)
 	}
 }

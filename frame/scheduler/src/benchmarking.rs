@@ -20,20 +20,20 @@
 #![cfg(feature = "runtime-benchmarks")]
 
 use super::*;
-use sp_std::{vec, prelude::*};
-use frame_system::RawOrigin;
-use frame_support::{ensure, traits::OnInitialize};
 use frame_benchmarking::benchmarks;
+use frame_support::{ensure, traits::OnInitialize};
+use frame_system::RawOrigin;
+use sp_std::{prelude::*, vec};
 
-use crate::Module as Scheduler;
-use frame_system::Module as System;
+use crate::Pallet as Scheduler;
+use frame_system::Pallet as System;
 
 const BLOCK_NUMBER: u32 = 2;
 
 // Add `n` named items to the schedule
-fn fill_schedule<T: Config> (when: T::BlockNumber, n: u32) -> Result<(), &'static str> {
+fn fill_schedule<T: Config>(when: T::BlockNumber, n: u32) -> Result<(), &'static str> {
 	// Essentially a no-op call.
-	let call = frame_system::Call::set_storage(vec![]);
+	let call = frame_system::Call::set_storage { items: vec![] };
 	for i in 0..n {
 		// Named schedule is strictly heavier than anonymous
 		Scheduler::<T>::do_schedule_named(
@@ -58,7 +58,7 @@ benchmarks! {
 		let periodic = Some((T::BlockNumber::one(), 100));
 		let priority = 0;
 		// Essentially a no-op call.
-		let call = Box::new(frame_system::Call::set_storage(vec![]).into());
+		let call = Box::new(frame_system::Call::set_storage { items: vec![] }.into());
 
 		fill_schedule::<T>(when, s)?;
 	}: _(RawOrigin::Root, when, periodic, priority, call)
@@ -95,7 +95,7 @@ benchmarks! {
 		let periodic = Some((T::BlockNumber::one(), 100));
 		let priority = 0;
 		// Essentially a no-op call.
-		let call = Box::new(frame_system::Call::set_storage(vec![]).into());
+		let call = Box::new(frame_system::Call::set_storage { items: vec![] }.into());
 
 		fill_schedule::<T>(when, s)?;
 	}: _(RawOrigin::Root, id, when, periodic, priority, call)
@@ -139,22 +139,6 @@ benchmarks! {
 			"didn't append schedule"
 		);
 	}
-}
 
-#[cfg(test)]
-mod tests {
-	use super::*;
-	use crate::tests::{new_test_ext, Test};
-	use frame_support::assert_ok;
-
-	#[test]
-	fn test_benchmarks() {
-		new_test_ext().execute_with(|| {
-			assert_ok!(test_benchmark_schedule::<Test>());
-			assert_ok!(test_benchmark_cancel::<Test>());
-			assert_ok!(test_benchmark_schedule_named::<Test>());
-			assert_ok!(test_benchmark_cancel_named::<Test>());
-			assert_ok!(test_benchmark_on_initialize::<Test>());
-		});
-	}
+	impl_benchmark_test_suite!(Scheduler, crate::tests::new_test_ext(), crate::tests::Test);
 }

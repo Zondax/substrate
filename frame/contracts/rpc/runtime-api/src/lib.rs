@@ -24,19 +24,22 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
 use codec::Codec;
+use pallet_contracts_primitives::{
+	Code, ContractExecResult, ContractInstantiateResult, GetStorageResult,
+};
 use sp_std::vec::Vec;
-use pallet_contracts_primitives::{ContractExecResult, GetStorageResult, RentProjectionResult};
 
 sp_api::decl_runtime_apis! {
 	/// The API to interact with contracts without using executive.
-	pub trait ContractsApi<AccountId, Balance, BlockNumber> where
+	pub trait ContractsApi<AccountId, Balance, BlockNumber, Hash> where
 		AccountId: Codec,
 		Balance: Codec,
 		BlockNumber: Codec,
+		Hash: Codec,
 	{
 		/// Perform a call from a specified account to a given contract.
 		///
-		/// See the contracts' `call` dispatchable function for more details.
+		/// See `pallet_contracts::Pallet::call`.
 		fn call(
 			origin: AccountId,
 			dest: AccountId,
@@ -45,23 +48,26 @@ sp_api::decl_runtime_apis! {
 			input_data: Vec<u8>,
 		) -> ContractExecResult;
 
+		/// Instantiate a new contract.
+		///
+		/// See `pallet_contracts::Pallet::instantiate`.
+		fn instantiate(
+			origin: AccountId,
+			endowment: Balance,
+			gas_limit: u64,
+			code: Code<Hash>,
+			data: Vec<u8>,
+			salt: Vec<u8>,
+		) -> ContractInstantiateResult<AccountId>;
+
 		/// Query a given storage key in a given contract.
 		///
 		/// Returns `Ok(Some(Vec<u8>))` if the storage value exists under the given key in the
 		/// specified account and `Ok(None)` if it doesn't. If the account specified by the address
-		/// doesn't exist, or doesn't have a contract or if the contract is a tombstone, then `Err`
-		/// is returned.
+		/// doesn't exist, or doesn't have a contract then `Err` is returned.
 		fn get_storage(
 			address: AccountId,
 			key: [u8; 32],
 		) -> GetStorageResult;
-
-		/// Returns the projected time a given contract will be able to sustain paying its rent.
-		///
-		/// The returned projection is relevant for the current block, i.e. it is as if the contract
-		/// was accessed at the current block.
-		///
-		/// Returns `Err` if the contract is in a tombstone state or doesn't exist.
-		fn rent_projection(address: AccountId) -> RentProjectionResult<BlockNumber>;
 	}
 }
