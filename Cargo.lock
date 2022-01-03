@@ -1617,7 +1617,7 @@ dependencies = [
  "frame-metadata",
  "frame-support-procedural",
  "frame-system",
- "impl-trait-for-tuples 0.2.0",
+ "impl-trait-for-tuples",
  "log",
  "once_cell",
  "parity-scale-codec",
@@ -1695,7 +1695,7 @@ version = "2.0.1"
 dependencies = [
  "criterion",
  "frame-support",
- "impl-trait-for-tuples 0.2.0",
+ "impl-trait-for-tuples",
  "parity-scale-codec",
  "serde",
  "sp-core",
@@ -2447,20 +2447,9 @@ dependencies = [
 
 [[package]]
 name = "impl-trait-for-tuples"
-version = "0.1.3"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7ef5550a42e3740a0e71f909d4c861056a284060af885ae7aa6242820f920d9d"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
-name = "impl-trait-for-tuples"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6f65a8ecf74feeacdab8d38cb129e550ca871cccaa7d1921d8636ecd75534903"
+checksum = "d5dacb10c5b3bb92d46ba347505a9041e676bb20ad220101326bffb0c93031ee"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -4339,7 +4328,7 @@ version = "2.0.1"
 dependencies = [
  "frame-support",
  "frame-system",
- "impl-trait-for-tuples 0.2.0",
+ "impl-trait-for-tuples",
  "parity-scale-codec",
  "sp-authorship",
  "sp-core",
@@ -4908,7 +4897,7 @@ version = "2.0.1"
 dependencies = [
  "frame-support",
  "frame-system",
- "impl-trait-for-tuples 0.1.3",
+ "impl-trait-for-tuples",
  "lazy_static",
  "pallet-timestamp",
  "parity-scale-codec",
@@ -5056,7 +5045,7 @@ dependencies = [
  "frame-benchmarking",
  "frame-support",
  "frame-system",
- "impl-trait-for-tuples 0.2.0",
+ "impl-trait-for-tuples",
  "parity-scale-codec",
  "serde",
  "sp-core",
@@ -5136,7 +5125,7 @@ dependencies = [
  "frame-benchmarking",
  "frame-support",
  "frame-system",
- "impl-trait-for-tuples 0.2.0",
+ "impl-trait-for-tuples",
  "pallet-balances",
  "parity-scale-codec",
  "serde",
@@ -5272,7 +5261,7 @@ checksum = "8f17f15cb05897127bf36a240085a1f0bbef7bce3024849eccf7f93f6171bc27"
 dependencies = [
  "cfg-if 1.0.0",
  "hashbrown",
- "impl-trait-for-tuples 0.2.0",
+ "impl-trait-for-tuples",
  "parity-util-mem-derive",
  "parking_lot 0.11.1",
  "primitive-types",
@@ -6501,7 +6490,7 @@ dependencies = [
 name = "sc-chain-spec"
 version = "2.0.1"
 dependencies = [
- "impl-trait-for-tuples 0.2.0",
+ "impl-trait-for-tuples",
  "parity-scale-codec",
  "sc-chain-spec-derive",
  "sc-consensus-babe",
@@ -8462,7 +8451,7 @@ version = "2.0.1"
 dependencies = [
  "either",
  "hash256-std-hasher",
- "impl-trait-for-tuples 0.2.0",
+ "impl-trait-for-tuples",
  "log",
  "parity-scale-codec",
  "parity-util-mem",
@@ -8482,7 +8471,7 @@ dependencies = [
 name = "sp-runtime-interface"
 version = "2.0.1"
 dependencies = [
- "impl-trait-for-tuples 0.2.0",
+ "impl-trait-for-tuples",
  "parity-scale-codec",
  "primitive-types",
  "rustversion",
@@ -8661,7 +8650,7 @@ dependencies = [
 name = "sp-timestamp"
 version = "2.0.1"
 dependencies = [
- "impl-trait-for-tuples 0.2.0",
+ "impl-trait-for-tuples",
  "parity-scale-codec",
  "sp-api",
  "sp-inherents",
@@ -8741,7 +8730,7 @@ dependencies = [
 name = "sp-wasm-interface"
 version = "2.0.1"
 dependencies = [
- "impl-trait-for-tuples 0.2.0",
+ "impl-trait-for-tuples",
  "parity-scale-codec",
  "sp-std",
  "wasmi",
