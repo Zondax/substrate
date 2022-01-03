@@ -33,7 +33,7 @@ impl-trait-for-tuples = "0.2.0"
 smallvec = "1.4.1"
 
 [dev-dependencies]
-pretty_assertions = "0.6.1"
+pretty_assertions = "1.0.0"
 frame-system = { version = "2.0.0", path = "../system" }
 parity-util-mem = { version = "0.8.0", default-features = false, features = ["primitive-types"] }
 substrate-test-runtime-client = { version = "2.0.0", path = "../../test-utils/runtime/client" }
