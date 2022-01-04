@@ -22,7 +22,7 @@ libp2p = { version = "0.34.0", default-features = false, features = ["dns", "tcp
 log = "0.4.8"
 pin-project = "0.4.6"
 rand = "0.7.2"
-serde = { version = "1.0.101", features = ["derive"] }
+serde = { version = "1.0.133", features = ["derive"] }
 take_mut = "0.2.2"
 void = "1.0.2"
 tracing = "0.1.10"
