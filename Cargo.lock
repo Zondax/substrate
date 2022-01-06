@@ -317,6 +317,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "asynchronous-codec"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f0de5164e5edbf51c45fb8c2d9664ae1c095cce1b265ecf7569093c0d66ef690"
+dependencies = [
+ "bytes 1.0.1",
+ "futures-sink",
+ "futures-util",
+ "memchr",
+ "pin-project-lite 0.2.0",
+]
+
+[[package]]
 name = "atomic"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2952,7 +2965,7 @@ version = "0.27.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "12451ba9493e87c91baf2a6dffce9ddf1fbc807a0861532d7cf477954f8ebbee"
 dependencies = [
- "asynchronous-codec",
+ "asynchronous-codec 0.5.0",
  "base64 0.13.0",
  "byteorder",
  "bytes 1.0.1",
@@ -2995,7 +3008,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "456f5de8e283d7800ca848b9b9a4e2a578b790bd8ae582b885e831353cf0e5df"
 dependencies = [
  "arrayvec 0.5.2",
- "asynchronous-codec",
+ "asynchronous-codec 0.5.0",
  "bytes 1.0.1",
  "either",
  "fnv",
@@ -3041,7 +3054,7 @@ version = "0.27.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2705dc94b01ab9e3779b42a09bbf3712e637ed213e875c30face247291a85af0"
 dependencies = [
- "asynchronous-codec",
+ "asynchronous-codec 0.5.0",
  "bytes 1.0.1",
  "futures 0.3.19",
  "libp2p-core",
@@ -3096,7 +3109,7 @@ version = "0.27.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "48e8c1ec305c9949351925cdc7196b9570f4330477f5e47fbf5bb340b57e26ed"
 dependencies = [
- "asynchronous-codec",
+ "asynchronous-codec 0.5.0",
  "bytes 1.0.1",
  "futures 0.3.19",
  "libp2p-core",
@@ -7100,7 +7113,7 @@ dependencies = [
  "assert_matches",
  "async-std",
  "async-trait",
- "asynchronous-codec",
+ "asynchronous-codec 0.5.0",
  "bitflags",
  "bs58",
  "bytes 1.0.1",
@@ -7146,7 +7159,7 @@ dependencies = [
  "substrate-test-runtime-client",
  "tempfile",
  "thiserror",
- "unsigned-varint 0.6.0",
+ "unsigned-varint 0.7.1",
  "void",
  "wasm-timer",
  "zeroize",
@@ -9830,7 +9843,19 @@ version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "35581ff83d4101e58b582e607120c7f5ffb17e632a980b1f38334d76b36908b2"
 dependencies = [
- "asynchronous-codec",
+ "asynchronous-codec 0.5.0",
+ "bytes 1.0.1",
+ "futures-io",
+ "futures-util",
+]
+
+[[package]]
+name = "unsigned-varint"
+version = "0.7.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d86a8dc7f45e4c1b0d30e43038c38f274e77af056aa5f74b93c2cf9eb3c1c836"
+dependencies = [
+ "asynchronous-codec 0.6.0",
  "bytes 1.0.1",
  "futures-io",
  "futures-util",
