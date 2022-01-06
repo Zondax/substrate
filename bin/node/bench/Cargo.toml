@@ -40,4 +40,4 @@ lazy_static = "1.4.0"
 parity-util-mem = { version = "0.8.0", default-features = false, features = ["primitive-types"] }
 parity-db = { version = "0.1.2" }
 sc-transaction-pool = { version = "2.0.0", path = "../../../client/transaction-pool" }
-futures = { version = "0.3.4", features = ["thread-pool"] }
+futures = { version = "0.3.19", features = ["thread-pool"] }
