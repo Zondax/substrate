@@ -20,7 +20,7 @@ derive_more = "0.99.2"
 sc-executor = { version = "0.8.0", path = "../executor" }
 sp-externalities = { version = "0.8.0", path = "../../primitives/externalities" }
 fnv = "1.0.6"
-futures = "0.3.1"
+futures = "0.3.19"
 hash-db = { version = "0.15.2", default-features = false }
 sp-blockchain = { version = "2.0.0", path = "../../primitives/blockchain" }
 sp-inherents = { version = "2.0.0", default-features = false, path = "../../primitives/inherents" }
