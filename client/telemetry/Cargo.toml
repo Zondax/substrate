@@ -19,7 +19,7 @@ parking_lot = "0.11.2"
 futures = "0.3.19"
 wasm-timer = "0.2.5"
 libp2p = { version = "0.34.0", default-features = false, features = ["dns", "tcp-async-io", "wasm-ext", "websocket"] }
-log = "0.4.8"
+log = "0.4.14"
 pin-project = "0.4.6"
 rand = "0.7.2"
 serde = { version = "1.0.101", features = ["derive"] }
