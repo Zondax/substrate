@@ -472,17 +472,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "blake2b_simd"
-version = "0.5.11"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "afa748e348ad3be8263be728124b24a24f268266f6f5d58af9d75f6a40b5c587"
-dependencies = [
- "arrayref",
- "arrayvec 0.5.2",
- "constant_time_eq",
-]
-
-[[package]]
 name = "block-buffer"
 version = "0.7.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1274,18 +1263,18 @@ dependencies = [
 
 [[package]]
 name = "directories"
-version = "3.0.1"
+version = "4.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f8fed639d60b58d0f53498ab13d26f621fd77569cc6edb031f4cc36a2ad9da0f"
+checksum = "f51c5d4ddabd36886dd3e1438cb358cdcb0d7c499cb99cb4ac2e38e18b5cb210"
 dependencies = [
  "dirs-sys",
 ]
 
 [[package]]
 name = "dirs-sys"
-version = "0.3.5"
+version = "0.3.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8e93d7f5705de3e49895a2b5e0b8855a1c27f080192ae9c32a6432d50741a57a"
+checksum = "03d86534ed367a67548dc68113a0f5db55432fdfbb6e6f9d77704397d95d5780"
 dependencies = [
  "libc",
  "redox_users",
@@ -2056,9 +2045,9 @@ dependencies = [
 
 [[package]]
 name = "getrandom"
-version = "0.2.1"
+version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4060f4657be78b8e766215b02b18a2e862d83745545de804638e2b545e81aee6"
+checksum = "418d37c8b1d42553c93648be529cb70f920d3baf8ef469b74b9638df426e0b4c"
 dependencies = [
  "cfg-if 1.0.0",
  "js-sys",
@@ -3793,7 +3782,7 @@ dependencies = [
  "generic-array 0.13.2",
  "matrixmultiply",
  "num-complex",
- "num-rational",
+ "num-rational 0.2.4",
  "num-traits",
  "rand 0.7.3",
  "rand_distr",
@@ -4314,6 +4303,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "num-bigint"
+version = "0.4.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f93ab6289c7b344a8a9f60f88d80aa20032336fe78da341afc91c8a2341fc75f"
+dependencies = [
+ "autocfg 1.0.1",
+ "num-integer",
+ "num-traits",
+]
+
+[[package]]
 name = "num-complex"
 version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4340,7 +4340,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5c000134b5dbf44adc5cb772486d335293351644b801551abe8f75c84cfa4aef"
 dependencies = [
  "autocfg 1.0.1",
- "num-bigint",
+ "num-bigint 0.2.6",
+ "num-integer",
+ "num-traits",
+]
+
+[[package]]
+name = "num-rational"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d41702bd167c2df5520b384281bc111a4b5efcf7fbc4c9c222c815b07e0a6a6a"
+dependencies = [
+ "autocfg 1.0.1",
+ "num-bigint 0.4.3",
  "num-integer",
  "num-traits",
 ]
@@ -6181,7 +6193,7 @@ version = "0.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c026d7df8b298d90ccbbc5190bd04d85e159eaf5576caeacf8741da93ccbd2e5"
 dependencies = [
- "getrandom 0.2.1",
+ "getrandom 0.2.4",
 ]
 
 [[package]]
@@ -6341,13 +6353,12 @@ dependencies = [
 
 [[package]]
 name = "redox_users"
-version = "0.3.5"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "de0737333e7a9502c789a36d7c7fa6092a49895d4faa31ca5df163857ded2e9d"
+checksum = "528532f3d801c87aec9def2add9ca802fe569e44a544afe633765267840abe64"
 dependencies = [
- "getrandom 0.1.15",
- "redox_syscall 0.1.57",
- "rust-argon2",
+ "getrandom 0.2.4",
+ "redox_syscall 0.2.10",
 ]
 
 [[package]]
@@ -6469,18 +6480,6 @@ checksum = "d755237fc0f99d98641540e66abac8bc46a0652f19148ac9e21de2da06b326c9"
 dependencies = [
  "libc",
  "winapi 0.3.9",
-]
-
-[[package]]
-name = "rust-argon2"
-version = "0.8.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9dab61250775933275e84053ac235621dfb739556d5c54a2f2e9313b7cf43a19"
-dependencies = [
- "base64 0.12.3",
- "blake2b_simd",
- "constant_time_eq",
- "crossbeam-utils 0.7.2",
 ]
 
 [[package]]
@@ -6836,7 +6835,7 @@ dependencies = [
  "derive_more",
  "futures 0.3.19",
  "futures-timer 3.0.2",
- "getrandom 0.2.1",
+ "getrandom 0.2.4",
  "log",
  "parity-scale-codec",
  "parking_lot 0.11.2",
@@ -6879,8 +6878,8 @@ dependencies = [
  "futures-timer 3.0.2",
  "log",
  "merlin 3.0.0",
- "num-bigint",
- "num-rational",
+ "num-bigint 0.2.6",
+ "num-rational 0.4.0",
  "num-traits",
  "parity-scale-codec",
  "parking_lot 0.11.2",
@@ -7540,7 +7539,7 @@ name = "sc-service"
 version = "0.8.1"
 dependencies = [
  "async-std",
- "directories 3.0.1",
+ "directories 4.0.1",
  "exit-future",
  "futures 0.1.30",
  "futures 0.3.19",
@@ -8281,7 +8280,7 @@ name = "sp-arithmetic-fuzzer"
 version = "2.0.0"
 dependencies = [
  "honggfuzz",
- "num-bigint",
+ "num-bigint 0.2.6",
  "num-traits",
  "primitive-types",
  "sp-arithmetic",
@@ -9079,7 +9078,7 @@ dependencies = [
  "futures 0.1.30",
  "futures 0.3.19",
  "futures-timer 3.0.2",
- "getrandom 0.2.1",
+ "getrandom 0.2.4",
  "js-sys",
  "kvdb-web",
  "libp2p-wasm-ext 0.28.0",
@@ -10332,7 +10331,7 @@ dependencies = [
  "errno",
  "libc",
  "memory_units",
- "num-rational",
+ "num-rational 0.2.4",
  "num-traits",
  "parity-wasm 0.41.0",
  "wasmi-validation",
