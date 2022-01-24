@@ -4704,7 +4704,7 @@ dependencies = [
  "sp-runtime",
  "sp-sandbox",
  "sp-std",
- "wasmi-validation",
+ "wasmi-validation 0.4.1",
  "wat",
 ]
 
@@ -10416,7 +10416,7 @@ dependencies = [
  "num-rational 0.2.4",
  "num-traits",
  "parity-wasm 0.41.0",
- "wasmi-validation",
+ "wasmi-validation 0.3.0",
 ]
 
 [[package]]
@@ -10426,6 +10426,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ea78c597064ba73596099281e2f4cfc019075122a65cdda3205af94f0b264d93"
 dependencies = [
  "parity-wasm 0.41.0",
+]
+
+[[package]]
+name = "wasmi-validation"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "165343ecd6c018fc09ebcae280752702c9a2ef3e6f8d02f1cfcbdb53ef6d7937"
+dependencies = [
+ "parity-wasm 0.42.2",
 ]
 
 [[package]]
