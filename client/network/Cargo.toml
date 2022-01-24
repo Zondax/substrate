@@ -41,7 +41,7 @@ nohash-hasher = "0.2.0"
 parking_lot = "0.11.2"
 pin-project = "0.4.6"
 prometheus-endpoint = { package = "substrate-prometheus-endpoint", version = "0.8.0", path = "../../utils/prometheus" }
-prost = "0.7"
+prost = "0.9"
 rand = "0.7.2"
 sc-block-builder = { version = "0.8.0", path = "../block-builder" }
 sc-client-api = { version = "2.0.0", path = "../api" }
