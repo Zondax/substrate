@@ -19,7 +19,7 @@ futures = "0.3.19"
 futures-timer = "3.0.1"
 libp2p = { version = "0.34.0", default-features = false }
 log = "0.4.14"
-lru = "0.6.1"
+lru = "0.7.2"
 prometheus-endpoint = { package = "substrate-prometheus-endpoint", version = "0.8.0", path = "../../utils/prometheus" }
 sc-network = { version = "0.8.0", path = "../network" }
 sp-runtime = { version = "2.0.0", path = "../../primitives/runtime" }
