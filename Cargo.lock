@@ -2691,7 +2691,6 @@ checksum = "489b9c612e60c766f751ab40fcb43cbb55a1e10bb44a9b4307ed510ca598cbd7"
 dependencies = [
  "failure",
  "futures 0.1.30",
- "hyper 0.12.36",
  "jsonrpc-core 15.1.0",
  "jsonrpc-pubsub 15.1.0",
  "log",
@@ -2753,6 +2752,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6f764902d7b891344a0acb65625f32f6f7c6db006952143bd650209fbe7d94db"
 dependencies = [
  "jsonrpc-client-transports 15.1.0",
+]
+
+[[package]]
+name = "jsonrpc-core-client"
+version = "18.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b51da17abecbdab3e3d4f26b01c5ec075e88d3abe3ab3b05dc9aa69392764ec0"
+dependencies = [
+ "futures 0.3.19",
+ "jsonrpc-client-transports 18.0.0",
 ]
 
 [[package]]
@@ -4215,7 +4224,7 @@ version = "2.0.0"
 dependencies = [
  "futures 0.3.19",
  "hyper 0.14.5",
- "jsonrpc-core-client",
+ "jsonrpc-core-client 18.0.0",
  "log",
  "node-primitives",
  "sc-rpc",
@@ -4817,7 +4826,7 @@ name = "pallet-contracts-rpc"
 version = "0.8.1"
 dependencies = [
  "jsonrpc-core 15.1.0",
- "jsonrpc-core-client",
+ "jsonrpc-core-client 18.0.0",
  "jsonrpc-derive",
  "pallet-contracts-primitives",
  "pallet-contracts-rpc-runtime-api",
@@ -5441,7 +5450,7 @@ name = "pallet-transaction-payment-rpc"
 version = "2.0.1"
 dependencies = [
  "jsonrpc-core 15.1.0",
- "jsonrpc-core-client",
+ "jsonrpc-core-client 18.0.0",
  "jsonrpc-derive",
  "pallet-transaction-payment-rpc-runtime-api",
  "parity-scale-codec",
@@ -7110,7 +7119,7 @@ dependencies = [
  "derive_more",
  "futures 0.3.19",
  "jsonrpc-core 15.1.0",
- "jsonrpc-core-client",
+ "jsonrpc-core-client 18.0.0",
  "jsonrpc-derive",
  "sc-consensus",
  "sc-consensus-babe",
@@ -7152,7 +7161,7 @@ dependencies = [
  "derive_more",
  "futures 0.3.19",
  "jsonrpc-core 15.1.0",
- "jsonrpc-core-client",
+ "jsonrpc-core-client 18.0.0",
  "jsonrpc-derive",
  "log",
  "parity-scale-codec",
@@ -7383,7 +7392,7 @@ dependencies = [
  "finality-grandpa",
  "futures 0.3.19",
  "jsonrpc-core 15.1.0",
- "jsonrpc-core-client",
+ "jsonrpc-core-client 15.1.0",
  "jsonrpc-derive",
  "jsonrpc-pubsub 15.1.0",
  "lazy_static",
@@ -7668,7 +7677,7 @@ dependencies = [
  "derive_more",
  "futures 0.3.19",
  "jsonrpc-core 15.1.0",
- "jsonrpc-core-client",
+ "jsonrpc-core-client 18.0.0",
  "jsonrpc-derive",
  "jsonrpc-pubsub 15.1.0",
  "log",
@@ -7839,7 +7848,7 @@ name = "sc-sync-state-rpc"
 version = "0.8.0"
 dependencies = [
  "jsonrpc-core 15.1.0",
- "jsonrpc-core-client",
+ "jsonrpc-core-client 18.0.0",
  "jsonrpc-derive",
  "sc-chain-spec",
  "sc-client-api",
@@ -9317,7 +9326,7 @@ dependencies = [
  "frame-system-rpc-runtime-api",
  "futures 0.3.19",
  "jsonrpc-core 15.1.0",
- "jsonrpc-core-client",
+ "jsonrpc-core-client 18.0.0",
  "jsonrpc-derive",
  "log",
  "parity-scale-codec",
