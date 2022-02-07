@@ -15,7 +15,7 @@ targets = ["x86_64-unknown-linux-gnu"]
 [dependencies]
 derive_more = "0.99.2"
 thiserror = "1.0.21"
-futures = "0.3.19"
+futures = "0.3.21"
 log = "0.4.14"
 parking_lot = "0.12.0"
 serde = { version = "1.0.136", features = ["derive"] }

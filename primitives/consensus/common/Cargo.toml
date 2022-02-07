@@ -21,7 +21,7 @@ log = "0.4.14"
 sp-core = { path= "../../core", version = "2.0.0"}
 sp-inherents = { version = "2.0.0", path = "../../inherents" }
 sp-state-machine = { version = "0.8.0", path = "../../state-machine" }
-futures = { version = "0.3.19", features = ["thread-pool"] }
+futures = { version = "0.3.21", features = ["thread-pool"] }
 futures-timer = "3.0.1"
 sp-std = { version = "2.0.0", path = "../../std" }
 sp-version = { version = "2.0.0", path = "../../version" }
@@ -36,7 +36,7 @@ prometheus-endpoint = { package = "substrate-prometheus-endpoint", path = "../..
 wasm-timer = "0.2.5"
 
 [dev-dependencies]
-futures = "0.3.19"
+futures = "0.3.21"
 sp-test-primitives = { version = "2.0.0", path = "../../test-primitives" }
 
 [features]
