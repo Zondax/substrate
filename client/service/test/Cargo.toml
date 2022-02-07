@@ -27,7 +27,7 @@ sp-externalities = { version = "0.8.0", path = "../../../primitives/externalitie
 sp-trie = { version = "2.0.0", path = "../../../primitives/trie" }
 sp-storage = { version = "2.0.0", path = "../../../primitives/storage" }
 sc-client-db = { version = "0.8.0", default-features = false, path = "../../db" }
-futures = { version = "0.3.19", features = ["compat"] }
+futures = { version = "0.3.21", features = ["compat"] }
 sc-service = { version = "0.8.0", default-features = false, features = ["test-helpers"], path = "../../service" }
 sc-network = { version = "0.8.0", path = "../../network" }
 sp-consensus = { version = "0.8.0", path = "../../../primitives/consensus/common" }

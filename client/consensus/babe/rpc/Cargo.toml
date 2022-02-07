@@ -23,7 +23,7 @@ serde = { version = "1.0.136", features=["derive"] }
 sp-blockchain = { version = "2.0.0", path = "../../../../primitives/blockchain" }
 sp-runtime = { version = "2.0.0", path = "../../../../primitives/runtime" }
 sc-consensus-epochs = { version = "0.8.0", path = "../../epochs" }
-futures = { version = "0.3.19", features = ["compat"] }
+futures = { version = "0.3.21", features = ["compat"] }
 derive_more = "0.99.2"
 sp-api = { version = "2.0.0", path = "../../../../primitives/api" }
 sp-consensus = { version = "0.8.0", path = "../../../../primitives/consensus/common" }
